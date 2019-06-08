@@ -8,6 +8,7 @@ class MainContainer extends Component {
     super()
     this.state = {
       stocks: [],
+      portfolio:[]
     }
   }
 
@@ -18,6 +19,18 @@ class MainContainer extends Component {
       .then( stocks => {
         this.setState({stocks: [...stocks]})
     })
+  }
+  handleStockClick = (event) => {
+    let clickedStockId = parseInt(event.target.id)
+    let clickedStock = this.state.stocks.find(stock => {return (stock.id === clickedStockId)?(stock):([])})
+    this.setState({portfolio:this.clickedStock})
+    this.handleFilterStockOut(event)
+  }
+  handleFilterStockOut(event){
+    let stockId = parseInt(event.target.id)
+    console.log(stockId)
+    let remainingStocks = this.state.stocks.filter(stock => {return (stock.id !== stockId)?(stock):([])})
+    console.log(remainingStocks);
   }
 
   render() {
@@ -30,6 +43,7 @@ class MainContainer extends Component {
 
               <StockContainer
                 stocks={this.state.stocks}
+                handleStockClick={this.handleStockClick}
                 />
             </div>
             <div className="col-4">

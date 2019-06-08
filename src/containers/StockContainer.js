@@ -5,11 +5,9 @@ class StockContainer extends Component {
   renderStocks = () => {
     return this.props.stocks.map(stock => (
       <Stock
-        stockId={stock.id}
-        ticker={stock.ticker}
-        name={stock.name}
-        type={stock.type}
-        price={stock.price}
+        stock={stock}
+        key={stock.name}
+        handleStockClick={this.props.handleStockClick}
       />
     ))
   }

@@ -21,16 +21,13 @@ class MainContainer extends Component {
     })
   }
   handleStockClick = (event) => {
-    let clickedStockId = parseInt(event.target.id)
-    let clickedStock = this.state.stocks.find(stock => {return (stock.id === clickedStockId)?(stock):([])})
-    this.setState({portfolio:this.clickedStock})
-    this.handleFilterStockOut(event)
-  }
-  handleFilterStockOut(event){
-    let stockId = parseInt(event.target.id)
-    console.log(stockId)
-    let remainingStocks = this.state.stocks.filter(stock => {return (stock.id !== stockId)?(stock):([])})
-    console.log(remainingStocks);
+    const array = [...this.state.stocks]
+    const stockId = parseInt(event.target.parentElement.id)
+    const stockIndex = stockId-1
+    const targetStock = array.slice(stockIndex, stockId)
+    return this.setState({portfolio: [...this.state.portfolio, ...targetStock]})
+    console.log(array)
+    debugger
   }
 
   render() {
@@ -48,7 +45,10 @@ class MainContainer extends Component {
             </div>
             <div className="col-4">
 
-              <PortfolioContainer/>
+              <PortfolioContainer
+                portfolio={this.state.portfolio}
+
+                />
 
             </div>
           </div>

@@ -3,13 +3,15 @@ import Stock from '../components/Stock'
 
 class PortfolioContainer extends Component {
   renderPortfolioStocks = () => {
-    console.log(this.props.portfolio);
-    return this.props.portfolio.map(stock => (
-      <Stock
+    return this.props.portfolio.map(stock => {
+      return(
+  <div key={stock.id} onClick={(event)=>{this.props.handleDeleteStock(event)}}><Stock
         stock={stock}
-        key={stock.id}
+        key={stock.index}
+        handleDeleteStock={this.props.handleDeleteStock}
         />
-    ))
+      </div>)
+    })
   }
   render() {
     return (

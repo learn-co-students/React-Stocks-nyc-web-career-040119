@@ -51,29 +51,22 @@ class MainContainer extends Component {
   }
 
   sortMe = (e) => {
-    switch (e.target.value) {
-      case "Alphabetically":
-        this.setState({
-          stocks: this.state.stocks.sort((a,b)=>{
-            return a.name.localeCompare(b.name)
-          }),
-          portfolio: this.state.portfolio.sort((a,b)=>{
-            return a.name.localeCompare(b.name)
-          })
-        })
-        break;
-      case "Price":
-        this.setState({
-          stocks: this.state.stocks.sort((a,b)=>{
-            return a.price - b.price
-          }),
-          portfolio: this.state.portfolio.sort((a,b)=>{
-            return a.price - b.price
-          })
-        })
-        break;
-      default:
-    }
+    this.setState({
+      stocks: this.state.stocks.sort((a,b)=>{
+        if (e.target.value === "Alphabetically") {
+          return a.name.localeCompare(b.name)
+        } else {
+          return a.price - b.price
+        }
+      }),
+      portfolio: this.state.portfolio.sort((a,b)=>{
+        if (e.target.value === "Alphabetically") {
+          return a.name.localeCompare(b.name)
+        } else {
+          return a.price - b.price
+        }
+      })
+    })
   }
 
   render() {

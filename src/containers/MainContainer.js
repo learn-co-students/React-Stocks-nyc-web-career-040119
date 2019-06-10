@@ -55,6 +55,7 @@ class MainContainer extends Component {
   } // END REMOVING
 
 
+  // SORT STOCK
   sortStocks = (e) => {
     // console.log(e.target)
     const sorted = [...this.state.stocks]
@@ -71,8 +72,10 @@ class MainContainer extends Component {
     this.setState({
       stocks: sorted
     })
-  }
+  } // END SORTING
 
+
+  // FILTER STOCK
   filterStock = (e) => {
     // console.log(e.target.value)
     // const filtered = this.state.stocks.filter(stock => {
@@ -82,7 +85,7 @@ class MainContainer extends Component {
       // filtered: filtered
       filter : e.target.value
     })
-  }
+  } // END FILTERING
 
   render() {
     console.log("Main Container state", this.state)

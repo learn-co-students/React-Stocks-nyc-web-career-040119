@@ -17,3 +17,37 @@ After the stocks are fetched, your job is to:
 * allow a user to filter stocks based on the type of the stock.
 
 Best of luck!
+
+## MVP Outline
+
+App
+  <!-- - Header -->
+  - MainContainer
+    - **state**
+      <!-- - stocks: [],
+      - searchStock: [],
+      - boughtStocks: [], -->
+      <!-- - sortByAbc: false, -->
+      <!-- - sortByPrice: false -->
+    - functions
+      - updateSearchStock
+      - sortAlphabetically
+      <!-- - buyStocks -->
+      <!-- - sellStocks -->
+    - SearchBar
+      - **this.state.stocks**
+      - **this.updateSearchStock**
+      - **this.sortAlphabetically**
+    - StockContainer
+      <!-- - **this.state.sortByAbc** -->
+      <!-- - **this.state.sortByPrice** -->
+      <!-- - **this.state.stocks** -->
+      <!-- - **this.buyStocks** -->
+      <!-- - Stock -->
+        <!-- - onClick buyStocks -->
+          <!-- - add to PortfolioContainer -->
+    <!-- - PortfolioContainer -->
+      <!-- - **this.state.boughtStocks** -->
+      <!-- - Stock -->
+        <!-- - onClick sellStocks -->
+          <!-- - remove from portfolio -->

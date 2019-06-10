@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   return (
-    <div>
-
+    <div onClick={props.handleFilter} onChange={props.handleDrop} >
+      {console.log(this.props)}
       <strong>Sort by:</strong>
       <label>
         <input type="radio" value="Alphabetically" checked={null} onChange={null}/>

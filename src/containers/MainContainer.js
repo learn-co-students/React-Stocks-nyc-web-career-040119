@@ -13,6 +13,7 @@ class MainContainer extends Component {
     filtered: false,
 
     boughtStocks: [],
+    stocksBought: 1,
 
     sortByAbc: false,
     sortByPrice: false
@@ -36,11 +37,16 @@ class MainContainer extends Component {
     const {name, ticker, price, type} = event.currentTarget.dataset
 
     // create a newStock object
-    const newStock = stocksCopy.find(stock => stock.name === name)
+    let newStock = stocksCopy.find(stock => stock.name === name)
+    newStock = {
+      ...newStock,
+      stockNumber: this.state.stocksBought
+    }
 
     // setState to include newStock
     this.setState({
-      boughtStocks: [...boughtStocksCopy, newStock]
+      boughtStocks: [...boughtStocksCopy, newStock],
+      stocksBought: this.state.stocksBought + 1
     })
   } // end buyStocks
 
@@ -49,14 +55,13 @@ class MainContainer extends Component {
     const boughtStocksCopy = [...this.state.boughtStocks]
 
     // destructure event
-    const {name, ticker, price, type} = event.currentTarget.dataset
+    const {name, ticker, price, type, stocknumber} = event.currentTarget.dataset
 
     // filter out the selected stock that was passed back as an event
     const soldStock = boughtStocksCopy.filter(stock => {
-      return stock.name !== name
+      return stock.stockNumber !== parseInt(stocknumber)
     })
 
-    console.log("soldStock", soldStock)
     this.setState({
       boughtStocks: [...soldStock]
     })

@@ -13,12 +13,13 @@ const Stock = (props) => {
     }
   }
 
-  const {name, price, ticker, type, id} = props.stock
+  const {name, price, ticker, type, id, stockNumber} = props.stock
 
   return (
     <div
       onClick={clickStock}
       key={name}
+      data-stocknumber={stockNumber ? stockNumber : null}
       data-name={name}
       data-price={price}
       data-ticker={ticker}

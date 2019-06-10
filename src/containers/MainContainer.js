@@ -29,18 +29,14 @@ class MainContainer extends Component {
   // HELPER FUNCTIONS
   buyStocks = (event) => {
     // create a copy of current state
-    const boughtStocksCopy = this.state.boughtStocks
+    const stocksCopy = [...this.state.stocks]
+    const boughtStocksCopy = [...this.state.boughtStocks]
 
     // destructure event
     const {name, ticker, price, type} = event.currentTarget.dataset
 
     // create a newStock object
-    const newStock = {
-      name,
-      ticker,
-      price,
-      type
-    }
+    const newStock = stocksCopy.find(stock => stock.name === name)
 
     // setState to include newStock
     this.setState({
